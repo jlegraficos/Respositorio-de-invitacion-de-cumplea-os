@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#173f31">
   <meta name="description" content="Invitación al segundo cumpleaños de Lautaro Ronaldo">
   <title>Lautaro Ronaldo cumple 2</title>
@@ -20,14 +20,17 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { width: 100%; overflow-x: hidden; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    img, svg { max-width: 100%; }
 
     body {
       margin: 0;
+      width: 100%;
       min-height: 100vh;
+      min-height: 100svh;
       display: grid;
       place-items: center;
-      padding: 32px 16px;
+      padding: max(32px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(32px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
       color: var(--white);
       font-family: "Montserrat", system-ui, sans-serif;
       background:
@@ -45,6 +48,8 @@
       display: grid;
       place-items: center;
       overflow: hidden;
+      min-height: 100vh;
+      min-height: 100dvh;
       background: linear-gradient(#102f25 0 54%, #177044 54% 100%);
       transition: opacity .75s ease, visibility .75s ease;
     }
@@ -279,20 +284,65 @@
     @keyframes balloon-rise { 0% { transform: translateY(0) rotate(-5deg); } 100% { transform: translateY(-125vh) rotate(10deg); } }
 
     @media (max-width: 560px) {
-      body { padding: 10px; }
-      .card { border-radius: 22px; }
-      .topbar { padding: 17px 18px 6px; }
-      .hero { min-height: 455px; padding-inline: 12px; }
-      h1 { font-size: clamp(3.3rem, 18vw, 5.2rem); }
-      .jersey-wrap { width: 235px; height: 245px; }
+      body { display: block; padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left)); }
+      .card { width: 100%; border-radius: 22px; box-shadow: 0 14px 0 #06130e, 0 23px 45px rgba(0,0,0,.55), inset 0 2px 0 rgba(255,255,255,.3); transform: none; }
+      .topbar { padding: 14px 15px 5px; }
+      .club-mark { gap: 7px; }
+      .mini-shield { width: 46px; height: 56px; }
+      .club-mark strong { font-size: .98rem; }
+      .club-mark small { font-size: .48rem; }
+      .age-badge { padding: 6px 9px; font-size: .8rem; }
+      .hero { min-height: 435px; padding: 25px 8px 12px; }
+      .kicker { font-size: .9rem; letter-spacing: .19em; }
+      h1 { font-size: clamp(3.15rem, 18vw, 5.2rem); line-height: .8; }
+      .turns { margin-top: 20px; padding-inline: 5px; font-size: .8rem; line-height: 1.35; }
+      .jersey-wrap { width: min(235px, 72vw); height: 235px; }
       .jersey-number { top: 70px; font-size: 6.3rem; }
-      .jersey-name { top: 64px; }
-      .ball { right: 2%; width: 58px; }
-      .info { padding: 30px 17px 24px; }
-      .details, .actions { grid-template-columns: 1fr; }
-      .detail { padding: 13px; }
-      .goal { right: 3%; bottom: 18%; width: 48vw; height: 45vw; }
-      .intro-ball { left: 5%; bottom: 17%; }
+      .jersey-name { top: 60px; font-size: 1.6rem; }
+      .shirt-crest { top: 46px; right: 45px; width: 43px; height: 52px; }
+      .shirt-brand { left: 55px; }
+      .shirt-sponsor { top: 105px; grid-template-columns: 37px 37px; grid-template-rows: 32px 32px; }
+      .ball { right: 2%; bottom: 26px; width: 58px; }
+      .info { padding: 29px 14px 24px; }
+      .headline { margin-bottom: 20px; font-size: clamp(1.42rem, 7vw, 1.85rem); line-height: 1.02; }
+      .details, .actions { grid-template-columns: 1fr; gap: 13px; }
+      .detail { min-height: 72px; padding: 12px; transform: none; }
+      .button { min-height: 56px; }
+      .footer { padding: 18px 12px; font-size: .72rem; line-height: 1.5; }
+      .intro-title { top: max(4%, env(safe-area-inset-top)); padding: 0 18px; font-size: clamp(.95rem, 5vw, 1.35rem); line-height: 1.2; }
+      .intro-title span { margin-top: 5px; line-height: 1.4; }
+      .goal { right: 2%; bottom: 20%; width: 56vw; height: 50vw; }
+      .intro-ball { left: 3%; bottom: 19%; width: clamp(54px, 17vw, 72px); }
+      .goal-text { width: 100%; text-align: center; font-size: clamp(4.6rem, 25vw, 8rem); }
+      .goal-text small { padding: 0 14px; font-size: .11em; line-height: 1.5; }
+      .skip { right: max(12px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); min-height: 42px; }
+      .thanks { padding: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left)); }
+      .thanks-photo { height: min(58dvh, 500px); }
+    }
+
+    @media (max-width: 380px) {
+      .topbar { padding-inline: 11px; }
+      .club-mark small { display: none; }
+      .hero { min-height: 405px; padding-top: 20px; }
+      h1 { font-size: 3.1rem; }
+      .turns { margin-top: 17px; }
+      .jersey-wrap { width: 210px; height: 215px; }
+      .jersey-name { top: 56px; font-size: 1.5rem; }
+      .jersey-number { top: 67px; font-size: 5.6rem; }
+      .shirt-crest { right: 40px; width: 39px; }
+      .shirt-brand { left: 49px; }
+      .shirt-sponsor { top: 96px; grid-template-columns: 34px 34px; grid-template-rows: 29px 29px; }
+      .ball { width: 50px; }
+      .info { padding-inline: 11px; }
+      .detail strong { font-size: 1rem; }
+    }
+
+    @media (max-height: 520px) and (orientation: landscape) {
+      .intro-title { top: 4%; font-size: 1rem; }
+      .goal { right: 10%; bottom: 8%; width: 35vw; height: 28vw; max-height: 67vh; }
+      .intro-ball { bottom: 11%; width: 60px; }
+      .goal-text { top: 42%; font-size: 7rem; }
+      .skip { bottom: 8px; }
     }
 
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } }
