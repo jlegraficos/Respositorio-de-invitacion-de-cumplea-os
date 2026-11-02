@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 510" role="img" aria-labelledby="title">
+  <title id="title">Escudo Sporting Portugal</title>
+  <defs>
+    <clipPath id="shield">
+      <path d="M45 142Q210 66 375 142v196q-7 91-165 157Q52 429 45 338z"/>
+    </clipPath>
+  </defs>
+  <g fill="#087d59" stroke="#fff" stroke-width="3">
+    <path d="M45 142Q210 66 375 142v196q-7 91-165 157Q52 429 45 338z"/>
+    <g clip-path="url(#shield)">
+      <path d="M0 252h420v26H0zm0 48h420v26H0zm0 48h420v26H0z" fill="#fff" stroke="none"/>
+      <path d="M0 278h420v22H0zm0 326h420v22H0z" fill="#087d59" stroke="none"/>
+    </g>
+  </g>
+  <text x="210" y="70" fill="#087d59" font-family="Arial Black,Arial,sans-serif" font-size="78" font-weight="900" text-anchor="middle" letter-spacing="5">SCP</text>
+  <text x="210" y="181" fill="#fff" font-family="Arial Black,Arial,sans-serif" font-size="45" font-weight="900" text-anchor="middle" transform="rotate(-1 210 181)">SPORTING</text>
+  <path d="M210 191l82 31v109q-7 55-82 87-75-32-82-87V222z" fill="#087d59" stroke="#fff" stroke-width="7"/>
+  <!-- León heráldico estilizado -->
+  <g fill="#f2c335" stroke="#f2c335" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M221 253q-27-22-51 2 22-6 28 11-27-8-39 15 22-9 35 4-26 4-29 26 19-14 38-7-22 14-12 37 11-21 36-22l-5 37 22-11 8-39q8-34-11-45l20-10 12 13 14-12-22-21-31 8q-5-25-28-31 13 12 15 45z" stroke-width="5"/>
+    <path d="M244 315q32 18 24 53 25-34-4-66" fill="none" stroke-width="10"/>
+    <circle cx="243" cy="246" r="4" fill="#087d59" stroke="none"/>
+    <path d="M188 235l-22-14 5 21-22 3 20 12" fill="none" stroke-width="8"/>
+    <path d="M205 337l-20 27 25-7m43-8 19 20-27-5" fill="none" stroke-width="9"/>
+  </g>
+  <text x="210" y="454" fill="#fff" font-family="Arial Black,Arial,sans-serif" font-size="39" font-weight="900" text-anchor="middle">PORTUGAL</text>
+</svg>
