@@ -60,13 +60,21 @@
     .intro-title span { display: block; color: var(--gold); font-size: .72em; }
     .goal { position: absolute; right: 6%; bottom: 14%; width: min(44vw, 420px); height: min(38vw, 330px); border: clamp(8px, 1.2vw, 15px) solid #fff; border-bottom: 0; border-radius: 8px 8px 0 0; filter: drop-shadow(12px 16px 7px rgba(0,0,0,.48)); transform: perspective(650px) rotateY(-8deg); box-shadow: inset 0 0 25px rgba(255,255,255,.3), 0 0 20px rgba(255,255,255,.25); }
     .goal::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(45deg, transparent 46%, rgba(255,255,255,.75) 48% 52%, transparent 54%), linear-gradient(-45deg, transparent 46%, rgba(255,255,255,.75) 48% 52%, transparent 54%); background-size: 28px 28px; }
-    .intro-ball { position: absolute; z-index: 5; left: 7%; bottom: 15%; width: clamp(58px, 9vw, 96px); filter: drop-shadow(10px 14px 8px rgba(0,0,0,.5)); animation: score-ball 4.8s cubic-bezier(.38,.01,.72,.43) forwards; }
-    .goal-text { position: absolute; z-index: 8; top: 34%; left: 50%; margin: 0; font-family: "Montserrat", Arial Black, sans-serif; font-size: clamp(4.8rem, 21vw, 12.5rem); font-weight: 900; font-style: italic; color: #fff; line-height: .72; letter-spacing: -.07em; -webkit-text-stroke: clamp(3px, .7vw, 8px) var(--green); paint-order: stroke fill; text-shadow: 0 5px 0 #075d39, 0 10px 0 #033c25, 0 18px 28px rgba(0,0,0,.75); opacity: 0; transform: translate(-50%, -50%) scale(.3) rotate(-8deg); animation: goal-pop 4.8s ease-out forwards; }
+    .intro-ball { position: absolute; z-index: 5; left: 7%; bottom: 15%; width: clamp(58px, 9vw, 96px); filter: drop-shadow(10px 14px 8px rgba(0,0,0,.5)); }
+    .intro.playing .intro-ball { animation: score-ball 4.8s cubic-bezier(.38,.01,.72,.43) forwards; }
+    .goal-text { position: absolute; z-index: 8; top: 34%; left: 50%; margin: 0; font-family: "Montserrat", Arial Black, sans-serif; font-size: clamp(4.8rem, 21vw, 12.5rem); font-weight: 900; font-style: italic; color: #fff; line-height: .72; letter-spacing: -.07em; -webkit-text-stroke: clamp(3px, .7vw, 8px) var(--green); paint-order: stroke fill; text-shadow: 0 5px 0 #075d39, 0 10px 0 #033c25, 0 18px 28px rgba(0,0,0,.75); opacity: 0; transform: translate(-50%, -50%) scale(.3) rotate(-8deg); }
+    .intro.playing .goal-text { animation: goal-pop 4.8s ease-out forwards; }
     .goal-text small { display: block; margin-top: .55em; color: #fff; font-family: "Montserrat", sans-serif; font-size: .105em; font-style: normal; letter-spacing: .16em; text-align: center; -webkit-text-stroke: 0; text-shadow: 0 2px 0 #075d39, 0 4px 8px #000; }
-    .skip { position: absolute; z-index: 10; right: 18px; bottom: 18px; padding: 8px 13px; border: 1px solid rgba(255,255,255,.5); border-radius: 999px; color: #fff; font: 700 .7rem "Montserrat", sans-serif; letter-spacing: .06em; background: rgba(0,0,0,.25); cursor: pointer; }
+    .score-button { position: absolute; z-index: 11; left: 50%; bottom: 8%; min-width: min(280px, 82vw); padding: 17px 28px; border: 3px solid #fff; border-radius: 999px; color: #fff; font: 900 clamp(1.05rem, 4vw, 1.35rem) "Montserrat", sans-serif; letter-spacing: .08em; text-transform: uppercase; background: linear-gradient(180deg, #17a968, #087d4b); box-shadow: 0 8px 0 #034b2d, 0 16px 28px rgba(0,0,0,.5), inset 0 2px 0 rgba(255,255,255,.45); transform: translateX(-50%); cursor: pointer; transition: transform .2s, box-shadow .2s, opacity .25s; }
+    .score-button:hover { transform: translateX(-50%) translateY(3px) scale(1.03); box-shadow: 0 5px 0 #034b2d, 0 10px 20px rgba(0,0,0,.45), inset 0 2px 0 rgba(255,255,255,.45); }
+    .score-button:active { transform: translateX(-50%) translateY(7px); box-shadow: 0 1px 0 #034b2d, 0 5px 10px rgba(0,0,0,.4); }
+    .intro.playing .score-button { opacity: 0; visibility: hidden; pointer-events: none; }
+    .skip { position: absolute; z-index: 10; right: 18px; bottom: 18px; display: none; padding: 8px 13px; border: 1px solid rgba(255,255,255,.5); border-radius: 999px; color: #fff; font: 700 .7rem "Montserrat", sans-serif; letter-spacing: .06em; background: rgba(0,0,0,.25); cursor: pointer; }
+    .intro.playing .skip { display: block; }
 
     .opening-balloons { position: fixed; inset: 0; z-index: 900; overflow: hidden; pointer-events: none; }
-    .party-balloon { position: absolute; bottom: -130px; width: 52px; height: 65px; border-radius: 52% 52% 48% 48%; box-shadow: inset -8px -7px 12px rgba(0,0,0,.15); animation: balloon-rise 7s ease-in var(--delay) forwards; }
+    .party-balloon { position: absolute; bottom: -130px; width: 52px; height: 65px; border-radius: 52% 52% 48% 48%; box-shadow: inset -8px -7px 12px rgba(0,0,0,.15); }
+    .opening-balloons.playing .party-balloon { animation: balloon-rise 7s ease-in var(--delay) forwards; }
     .party-balloon::before { content: ""; position: absolute; left: 22px; bottom: -9px; border: 5px solid transparent; border-bottom-color: currentColor; }
     .party-balloon::after { content: ""; position: absolute; top: 64px; left: 26px; width: 1px; height: 80px; background: rgba(255,255,255,.65); }
     .party-balloon.green { color: var(--green); background: var(--green); }
@@ -316,6 +324,7 @@
       .goal-text { width: 100%; text-align: center; font-size: clamp(4.6rem, 25vw, 8rem); }
       .goal-text small { padding: 0 14px; font-size: .11em; line-height: 1.5; }
       .skip { right: max(12px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); min-height: 42px; }
+      .score-button { bottom: max(8%, calc(env(safe-area-inset-bottom) + 18px)); min-height: 58px; }
       .thanks { padding: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left)); }
       .thanks-photo { height: min(58dvh, 500px); }
     }
@@ -360,6 +369,7 @@
       <ellipse cx="31" cy="24" rx="14" ry="8" fill="#fff" opacity=".72" filter="url(#shine-intro)" transform="rotate(-28 31 24)"/>
     </svg>
     <p class="goal-text">¡GOOOL!<small>La invitación está por comenzar</small></p>
+    <button class="score-button" id="score-button" type="button">⚽ Meter gol</button>
     <button class="skip" id="skip-intro" type="button">Saltar animación</button>
   </section>
 
@@ -458,7 +468,13 @@
       setTimeout(() => balloons.remove(), 4000);
     };
 
-    const introTimer = setTimeout(finishIntro, 5200);
+    let introTimer;
+    document.querySelector('#score-button').addEventListener('click', () => {
+      intro.classList.add('playing');
+      balloons.classList.add('playing');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      introTimer = setTimeout(finishIntro, reduceMotion ? 500 : 5200);
+    });
     document.querySelector('#skip-intro').addEventListener('click', () => {
       clearTimeout(introTimer);
       finishIntro();
