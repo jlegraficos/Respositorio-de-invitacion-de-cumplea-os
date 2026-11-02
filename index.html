@@ -56,8 +56,10 @@
     .intro.finished { opacity: 0; visibility: hidden; pointer-events: none; }
     .intro::before { content: ""; position: absolute; inset: 54% 0 0; opacity: .35; background: repeating-linear-gradient(90deg, #18814c 0 9%, #228e58 9% 18%); }
     .intro::after { content: ""; position: absolute; left: 50%; bottom: -40vw; width: min(110vw, 1000px); aspect-ratio: 1; border: 3px solid rgba(255,255,255,.5); border-radius: 50%; transform: translateX(-50%); }
-    .intro-title { position: absolute; top: 5%; z-index: 4; width: 100%; margin: 0; color: #fff; font-family: "Barlow Condensed", sans-serif; font-size: clamp(1rem, 4vw, 1.6rem); font-weight: 900; letter-spacing: .2em; text-align: center; text-transform: uppercase; }
-    .intro-title span { display: block; color: var(--gold); font-size: .72em; }
+    .intro-title { position: absolute; top: 5%; z-index: 4; width: 100%; margin: 0; padding: 0 20px; color: #fff; font-family: "Montserrat", system-ui, sans-serif; text-align: center; }
+    .intro-title strong { display: block; font-size: clamp(2.6rem, 7vw, 5.2rem); font-weight: 900; letter-spacing: -.06em; line-height: .9; text-shadow: 0 3px 0 #8cbdaa, 0 7px 0 #075f3b, 0 12px 22px rgba(0,0,0,.65); }
+    .intro-title .celebration { margin-top: .08em; color: #fff; font-family: "Barlow Condensed", sans-serif; font-size: clamp(2.9rem, 8vw, 5.8rem); font-style: italic; letter-spacing: -.015em; -webkit-text-stroke: 2px var(--green); paint-order: stroke fill; }
+    .intro-title span { display: inline-block; margin-top: 17px; padding: 8px 17px; border: 1px solid rgba(255,255,255,.5); border-radius: 999px; color: #fff; font-size: clamp(.7rem, 1.8vw, .95rem); font-weight: 800; letter-spacing: .14em; text-transform: uppercase; background: rgba(0,0,0,.2); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 5px 12px rgba(0,0,0,.22); }
     .goal { position: absolute; right: 6%; bottom: 14%; width: min(44vw, 420px); height: min(38vw, 330px); border: clamp(8px, 1.2vw, 15px) solid #fff; border-bottom: 0; border-radius: 8px 8px 0 0; filter: drop-shadow(12px 16px 7px rgba(0,0,0,.48)); transform: perspective(650px) rotateY(-8deg); box-shadow: inset 0 0 25px rgba(255,255,255,.3), 0 0 20px rgba(255,255,255,.25); }
     .goal::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(45deg, transparent 46%, rgba(255,255,255,.75) 48% 52%, transparent 54%), linear-gradient(-45deg, transparent 46%, rgba(255,255,255,.75) 48% 52%, transparent 54%); background-size: 28px 28px; }
     .intro-ball { position: absolute; z-index: 5; left: 7%; bottom: 15%; width: clamp(58px, 9vw, 96px); filter: drop-shadow(10px 14px 8px rgba(0,0,0,.5)); }
@@ -317,8 +319,10 @@
       .detail { min-height: 72px; padding: 12px; transform: none; }
       .button { min-height: 56px; }
       .footer { padding: 18px 12px; font-size: .72rem; line-height: 1.5; }
-      .intro-title { top: max(4%, env(safe-area-inset-top)); padding: 0 18px; font-size: clamp(.95rem, 5vw, 1.35rem); line-height: 1.2; }
-      .intro-title span { margin-top: 5px; line-height: 1.4; }
+      .intro-title { top: max(4%, env(safe-area-inset-top)); padding: 0 13px; }
+      .intro-title strong { font-size: clamp(2.2rem, 11vw, 3.4rem); line-height: .92; }
+      .intro-title .celebration { font-size: clamp(2.55rem, 13vw, 4rem); }
+      .intro-title span { margin-top: 13px; padding: 7px 12px; font-size: clamp(.62rem, 3vw, .78rem); line-height: 1.35; letter-spacing: .1em; }
       .goal { right: 2%; bottom: 20%; width: 56vw; height: 50vw; }
       .intro-ball { left: 3%; bottom: 19%; width: clamp(54px, 17vw, 72px); }
       .goal-text { width: 100%; text-align: center; font-size: clamp(4.6rem, 25vw, 8rem); }
@@ -347,7 +351,10 @@
     }
 
     @media (max-height: 520px) and (orientation: landscape) {
-      .intro-title { top: 4%; font-size: 1rem; }
+      .intro-title { top: 3%; }
+      .intro-title strong { font-size: 2.2rem; }
+      .intro-title .celebration { font-size: 2.55rem; }
+      .intro-title span { margin-top: 7px; padding-block: 5px; }
       .goal { right: 10%; bottom: 8%; width: 35vw; height: 28vw; max-height: 67vh; }
       .intro-ball { bottom: 11%; width: 60px; }
       .goal-text { top: 42%; font-size: 7rem; }
@@ -359,7 +366,11 @@
 </head>
 <body class="intro-playing">
   <section class="intro" id="intro" aria-label="Animación de gol">
-    <p class="intro-title">Un disparo directo a la celebración <span>¿Estás listo para el gol?</span></p>
+    <p class="intro-title">
+      <strong>Un disparo directo</strong>
+      <strong class="celebration">a la celebración</strong>
+      <span>¿Estás listo para el gol?</span>
+    </p>
     <div class="goal" aria-hidden="true"></div>
     <svg class="intro-ball" viewBox="0 0 100 100" aria-hidden="true">
       <defs><radialGradient id="ball3d-intro" cx="32%" cy="25%"><stop offset="0" stop-color="#fff"/><stop offset=".58" stop-color="#f4f4ef"/><stop offset=".84" stop-color="#b9bdb8"/><stop offset="1" stop-color="#555b57"/></radialGradient><filter id="shine-intro"><feGaussianBlur stdDeviation="1.4"/></filter></defs>
